@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:maths_in_wisconsin/login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +16,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -54,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const Center(child: Text("Dashboard", style: TextStyle(fontSize: 72))),
     const Center(child: Text("Homework", style: TextStyle(fontSize: 72))),
     const Center(child: Text("Leaderboard", style: TextStyle(fontSize: 72))),
-    const Center(child: Text("Account", style: TextStyle(fontSize: 72))),
+    SignInPage2(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "315330564655",
+    "firebase_url": "https://math-wis-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "math-wis",
+    "storage_bucket": "math-wis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315330564655:android:7ec569d849e5b934616cda",
+        "android_client_info": {
+          "package_name": "net.kincode.math"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315330564655-h9oj6rmrqf0237r88l7k0tbq354aht85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.kincode.math",
+            "certificate_hash": "2752faec1fd2635bfbb1c20890c889a524653603"
+          }
+        },
+        {
+          "client_id": "315330564655-dhl5j4fst9vs8506bk74ck42nd2p758v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFqDPpbd6C-qEoksKBwhKy06k51i5Vq4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315330564655-7lhmqg6dea2hr2p50vmv07feh058rell.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "315330564655-2l9dhbj9b62spq9rtpt2n9i55cod8ab8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.maths"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315330564655:android:62bbc8ffc58cd3f2616cda",
+        "android_client_info": {
+          "package_name": "net.kincode.maths"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315330564655-aca692d3t1396qv2j7fipdbdfp3lhbjh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.kincode.maths",
+            "certificate_hash": "2752faec1fd2635bfbb1c20890c889a524653603"
+          }
+        },
+        {
+          "client_id": "315330564655-dhl5j4fst9vs8506bk74ck42nd2p758v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFqDPpbd6C-qEoksKBwhKy06k51i5Vq4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315330564655-7lhmqg6dea2hr2p50vmv07feh058rell.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "315330564655-2l9dhbj9b62spq9rtpt2n9i55cod8ab8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.maths"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

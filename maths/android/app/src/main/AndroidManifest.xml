@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.maths">
+    package="net.kincode.maths">
    <application
         android:label="Maths In Wisconsin"
         android:name="${applicationName}"

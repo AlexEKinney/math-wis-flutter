@@ -8,7 +8,7 @@
 PRODUCT_NAME = Maths In Wisconsin;
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.maths
+PRODUCT_BUNDLE_IDENTIFIER = net.kincode.maths
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.

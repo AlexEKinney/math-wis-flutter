@@ -1,4 +1,4 @@
-package com.example.maths
+package net.kincode.maths
 
 import io.flutter.embedding.android.FlutterActivity
 
