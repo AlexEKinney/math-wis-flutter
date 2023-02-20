@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:maths_in_wisconsin/acc.dart';
+import 'package:maths_in_wisconsin/dashboard.dart';
 import 'package:maths_in_wisconsin/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(MyApp());
 }
 
@@ -16,14 +21,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
+        Get.to(SignInPage2());
       } else {
         print('User is signed in!');
+        //Get.to(MyApp());
       }
     });
-    return MaterialApp(
+
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
@@ -38,8 +46,43 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
       ),
+      routes: {
+        '/h': (BuildContext context) => const MyApp(),
+      },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
+  }
+
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => SignInPage2()));
+  }
+}
+
+class FirebaseService {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<String?> signInwithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+      await _auth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      throw e;
+    }
+  }
+
+  Future<void> signOutFromGoogle() async {
+    await _googleSignIn.signOut();
+    await _auth.signOut();
   }
 }
 
@@ -64,10 +107,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   final screens = [
-    const Center(child: Text("Dashboard", style: TextStyle(fontSize: 72))),
+    DashPage(),
     const Center(child: Text("Homework", style: TextStyle(fontSize: 72))),
-    const Center(child: Text("Leaderboard", style: TextStyle(fontSize: 72))),
-    SignInPage2(),
+    const Center(child: Text("Shop", style: TextStyle(fontSize: 72))),
+    AccPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -101,9 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: "Homework",
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.leaderboard_outlined),
-                  selectedIcon: Icon(Icons.leaderboard),
-                  label: "Leaderboard",
+                  icon: Icon(Icons.shop_outlined),
+                  selectedIcon: Icon(Icons.shop),
+                  label: "Shop",
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.person_outlined),
