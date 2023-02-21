@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:maths_in_wisconsin/acc.dart';
-import 'package:maths_in_wisconsin/dashboard.dart';
+import 'package:maths_in_wisconsin/dash.dart';
 import 'package:maths_in_wisconsin/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dash.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +24,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // while (1 == 1) {
+    //   if (FirebaseAuth.instance.currentUser == null) {
+    //     Get.to(SignInPage2());
+    //   }
+    //   sleep(const Duration(milliseconds: 250));
+    // }
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
@@ -35,7 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.red,
+        colorSchemeSeed: Colors.amber,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -144,8 +153,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: "Homework",
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.shop_outlined),
-                  selectedIcon: Icon(Icons.shop),
+                  icon: Icon(Icons.shopping_cart_outlined),
+                  selectedIcon: Icon(Icons.shopping_cart),
                   label: "Shop",
                 ),
                 NavigationDestination(

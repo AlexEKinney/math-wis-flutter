@@ -1,5 +1,64 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'login.dart';
 
 class DashPage extends StatelessWidget {
   const DashPage({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    String? CheckUserName() {
+      if (FirebaseAuth.instance.currentUser!.displayName != null) {
+        return FirebaseAuth.instance.currentUser?.displayName;
+      } else {
+        return "Failed To Load Name";
+      }
+    }
+
+    return Scaffold(
+        body: NestedScrollView(
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  expandedHeight: 250.0,
+                  floating: true,
+                  pinned: true,
+                  stretch: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                      centerTitle: true,
+                      collapseMode: CollapseMode.parallax,
+                      title: const Text("Maths In Wisconsin",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24.0,
+                          )),
+                      background: Image.network(
+                        "https://via.placeholder.com/500x250.png/FFFFFF/?text=Placeholder+Image+\nGeorge+Brooks",
+                        fit: BoxFit.cover,
+                      )),
+                ),
+              ];
+            },
+            body: Center(
+              child: Card(
+                elevation: 0,
+                color: Theme.of(context).colorScheme.surfaceVariant,
+                child: const SizedBox(
+                  width: 300,
+                  height: 100,
+                  child: Center(
+                      child: Text(
+                    'No Upcoming Assignments!',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                    textAlign: TextAlign.center,
+                  )),
+                ),
+              ),
+            )));
+  }
+}

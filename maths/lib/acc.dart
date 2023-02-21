@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'login.dart';
 
 class AccPage extends StatelessWidget {
   const AccPage({Key? key}) : super(key: key);
