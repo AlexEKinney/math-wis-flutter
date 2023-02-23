@@ -10,10 +10,14 @@ class AccPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? CheckUserName() {
-      if (FirebaseAuth.instance.currentUser!.displayName != null) {
-        return FirebaseAuth.instance.currentUser?.displayName;
-      } else {
-        return "Failed To Load Name";
+      try {
+        if (FirebaseAuth.instance.currentUser!.displayName != null) {
+          return FirebaseAuth.instance.currentUser?.displayName;
+        } else {
+          return "Failed To Load Name";
+        }
+      } catch (e) {
+        Get.offAll(() => const SignInPage2());
       }
     }
 

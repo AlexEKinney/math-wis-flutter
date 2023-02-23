@@ -8,6 +8,9 @@ class DashPage extends StatelessWidget {
   const DashPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    if (FirebaseAuth.instance.currentUser == null) {
+      Get.offAll(() => const SignInPage2());
+    }
     String? CheckUserName() {
       if (FirebaseAuth.instance.currentUser!.displayName != null) {
         return FirebaseAuth.instance.currentUser?.displayName;
@@ -27,17 +30,14 @@ class DashPage extends StatelessWidget {
                   pinned: true,
                   stretch: true,
                   flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      collapseMode: CollapseMode.parallax,
-                      title: const Text("Maths In Wisconsin",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24.0,
-                          )),
-                      background: Image.network(
-                        "https://via.placeholder.com/500x250.png/FFFFFF/?text=Placeholder+Image+\nGeorge+Brooks",
-                        fit: BoxFit.cover,
-                      )),
+                    centerTitle: true,
+                    collapseMode: CollapseMode.parallax,
+                    title: const Text("Maths In Wisconsin",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24.0,
+                        )),
+                  ),
                 ),
               ];
             },
