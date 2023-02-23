@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:maths_in_wisconsin/acc.dart';
 import 'package:maths_in_wisconsin/dash.dart';
 import 'package:maths_in_wisconsin/login.dart';
@@ -118,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final screens = [
     DashPage(),
     const Center(child: Text("Homework", style: TextStyle(fontSize: 72))),
+    const Center(child: Text("Learn", style: TextStyle(fontSize: 72))),
     const Center(child: Text("Shop", style: TextStyle(fontSize: 72))),
     AccPage(),
   ];
@@ -151,6 +153,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   icon: Icon(Icons.assignment_outlined),
                   selectedIcon: Icon(Icons.assignment),
                   label: "Homework",
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.calculate_outlined),
+                  selectedIcon: Icon(Icons.calculate_rounded),
+                  label: "Learn",
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.shopping_cart_outlined),
