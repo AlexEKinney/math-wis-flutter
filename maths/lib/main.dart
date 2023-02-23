@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:maths_in_wisconsin/acc.dart';
 import 'package:maths_in_wisconsin/dash.dart';
+import 'package:maths_in_wisconsin/hw.dart';
 import 'package:maths_in_wisconsin/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,14 +28,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // while (1 == 1) {
     //   if (FirebaseAuth.instance.currentUser == null) {
-    //     Get.to(SignInPage2());
+    //     Get.offAll(() => const SignInPage2());
     //   }
     //   sleep(const Duration(milliseconds: 250));
     // }
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
-        Get.to(SignInPage2());
+        Get.offAll(() => const SignInPage2());
       } else {
         print('User is signed in!');
         //Get.to(MyApp());
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.amber,
+        colorSchemeSeed: Colors.indigo,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -118,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int index = 0;
   final screens = [
     DashPage(),
-    const Center(child: Text("Homework", style: TextStyle(fontSize: 72))),
+    HwPage(),
     const Center(child: Text("Learn", style: TextStyle(fontSize: 72))),
     const Center(child: Text("Shop", style: TextStyle(fontSize: 72))),
     AccPage(),
