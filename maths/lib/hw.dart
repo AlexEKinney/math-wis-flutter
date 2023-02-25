@@ -10,7 +10,7 @@ class HwPage extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            "Table",
+            "Your Current Homework",
             textScaleFactor: 2,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
