@@ -26,6 +26,7 @@ class DashPage extends StatelessWidget {
               return <Widget>[
                 const SliverAppBar(
                   expandedHeight: 0,
+                  automaticallyImplyLeading: false,
                   floating: true,
                   pinned: true,
                   snap: true,

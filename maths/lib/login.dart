@@ -108,9 +108,7 @@ class __FormContentState extends State<_FormContent> {
                   FirebaseService service = FirebaseService();
                   try {
                     await service.signInwithGoogle();
-                    Get.to(MyHomePage(
-                      title: 'Temp',
-                    ));
+                    Navigator.pushReplacementNamed(context, "/dash");
                   } catch (e) {
                     print(e);
                   }

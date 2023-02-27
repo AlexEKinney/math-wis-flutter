@@ -5,8 +5,19 @@ class HwPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Homework")),
+      appBar: AppBar(
+        title: const Text("Homework"),
+        automaticallyImplyLeading: false,
+      ),
       body: Column(children: <Widget>[
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "QUIZ IDS - 0 - 2 (add, sub, mul)",
+            textScaleFactor: 0.75,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
@@ -28,10 +39,10 @@ class HwPage extends StatelessWidget {
                   textScaleFactor: 1.5,
                 ),
                 Text("Teacher", textScaleFactor: 1.5),
-                Text(" ", textScaleFactor: 1.5),
+                Text("Action", textScaleFactor: 1.5),
               ]),
               TableRow(children: [
-                const Text("Basic Addition", textScaleFactor: 1.5),
+                const Text("Addition", textScaleFactor: 1.5),
                 const Text("Mr Brooks", textScaleFactor: 1.5),
                 ButtonBar(
                   children: [
@@ -45,7 +56,7 @@ class HwPage extends StatelessWidget {
                 ),
               ]),
               TableRow(children: [
-                const Text("Basic Subtraction", textScaleFactor: 1.5),
+                const Text("Subtraction", textScaleFactor: 1.5),
                 const Text("Mr George", textScaleFactor: 1.5),
                 ButtonBar(
                   children: [
@@ -59,7 +70,7 @@ class HwPage extends StatelessWidget {
                 ),
               ]),
               TableRow(children: [
-                const Text("Basic Multiplication", textScaleFactor: 1.5),
+                const Text("Multiplication", textScaleFactor: 1.5),
                 const Text("Mrs Kinney", textScaleFactor: 1.5),
                 ButtonBar(
                   children: [

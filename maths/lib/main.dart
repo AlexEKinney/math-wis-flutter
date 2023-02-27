@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
       ),
       routes: {
-        '/h': (BuildContext context) => const MyApp(),
+        "/dash": (_) => new DashPage(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -136,8 +136,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
-              labelTextStyle: MaterialStateProperty.all(
-                  const TextStyle(fontSize: 14, fontWeight: FontWeight.w500))),
+              labelTextStyle: MaterialStateProperty.all(const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ))),
           child: NavigationBar(
               labelBehavior:
                   NavigationDestinationLabelBehavior.onlyShowSelected,

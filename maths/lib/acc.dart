@@ -169,7 +169,7 @@ class _TopPortion extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
                       decoration: const BoxDecoration(
-                          color: Colors.green, shape: BoxShape.circle),
+                          color: kDefaultIconDarkColor, shape: BoxShape.circle),
                     ),
                   ),
                 ),
