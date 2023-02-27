@@ -24,15 +24,16 @@ class DashPage extends StatelessWidget {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
-                SliverAppBar(
-                  expandedHeight: 250.0,
+                const SliverAppBar(
+                  expandedHeight: 0,
                   floating: true,
                   pinned: true,
-                  stretch: true,
+                  snap: true,
+                  stretch: false,
                   flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
                     collapseMode: CollapseMode.parallax,
-                    title: const Text("Maths In Wisconsin",
+                    title: Text("Maths In Wisconsin",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 24.0,
