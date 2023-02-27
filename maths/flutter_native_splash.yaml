@@ -1,0 +1,17 @@
+# flutter_native_splash-development.yaml
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/math.png
+  branding: assets/images/math.png
+  color_dark: "#121212"
+  image_dark: assets/images/math.png
+  branding_dark: assets/images/math.png
+
+  android_12:
+    image: assets/images/math.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/math.png
+    icon_background_color_dark: "#121212"
+
+  web: true
+  ios: false
