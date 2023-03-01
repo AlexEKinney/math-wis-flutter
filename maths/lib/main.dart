@@ -9,7 +9,6 @@ import 'package:maths_in_wisconsin/hw.dart';
 import 'package:maths_in_wisconsin/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dash.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
