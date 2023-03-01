@@ -57,7 +57,7 @@ class HwPage extends StatelessWidget {
               ]),
               TableRow(children: [
                 const Text("Subtraction", textScaleFactor: 1.5),
-                const Text("Mr George", textScaleFactor: 1.5),
+                const Text("Mr WISCONSIN", textScaleFactor: 1.5),
                 ButtonBar(
                   children: [
                     ElevatedButton(
