@@ -13,9 +13,9 @@ class SignInPage2 extends StatelessWidget {
     return Scaffold(
         body: Center(
             child: isSmallScreen
-                ? const Column(
+                ? Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
+                    children: const [
                       _Logo(),
                       _FormContent(),
                     ],
@@ -23,8 +23,8 @@ class SignInPage2 extends StatelessWidget {
                 : Container(
                     padding: const EdgeInsets.all(32.0),
                     constraints: const BoxConstraints(maxWidth: 800),
-                    child: const Row(
-                      children: [
+                    child: Row(
+                      children: const [
                         Expanded(child: _Logo()),
                         Expanded(
                           child: Center(child: _FormContent()),
@@ -145,7 +145,6 @@ class FirebaseService {
       print(e.message);
       throw e;
     }
-    
   }
 
   Future<void> signOutFromGoogle() async {
