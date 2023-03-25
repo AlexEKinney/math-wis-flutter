@@ -15,7 +15,7 @@ class HwPage extends StatelessWidget {
           child: Text(
             "QUIZ IDS - 0 - 2 (add, sub, mul)",
             textScaleFactor: 0.75,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.normal),
           ),
         ),
         const Padding(

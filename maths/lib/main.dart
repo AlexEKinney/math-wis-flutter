@@ -25,12 +25,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // while (1 == 1) {
-    //   if (FirebaseAuth.instance.currentUser == null) {
-    //     Get.offAll(() => const SignInPage2());
-    //   }
-    //   sleep(const Duration(milliseconds: 250));
-    // }
+//    if (FirebaseAuth.instance.currentUser == null) {
+ //     Get.offAll(() => const SignInPage2());
+ //   }
+
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
@@ -57,7 +55,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
       ),
       routes: {
-        "/dash": (_) => new DashPage(),
+        "/dash": (_) => const DashPage(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
