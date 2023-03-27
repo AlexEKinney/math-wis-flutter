@@ -157,7 +157,7 @@ class _TopPortion extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://via.placeholder.com/250.png/ggg")),
+                            "https://cdn.kincode.net/maths/av/bg/1.svg")),
                   ),
                 ),
                 Positioned(

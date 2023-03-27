@@ -26,9 +26,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 //    if (FirebaseAuth.instance.currentUser == null) {
- //     Get.offAll(() => const SignInPage2());
- //   }
-
+    //     Get.offAll(() => const SignInPage2());
+    //   }
+    Get.testMode = true;
+    if (FirebaseAuth.instance.currentUser == null) {
+      Get.offAll(() => const SignInPage2());
+    }
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
@@ -38,7 +41,6 @@ class MyApp extends StatelessWidget {
         //Get.to(MyApp());
       }
     });
-
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
