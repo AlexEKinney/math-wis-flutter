@@ -11,6 +11,9 @@ class DashPage extends StatelessWidget {
     if (FirebaseAuth.instance.currentUser == null) {
       Get.offAll(() => const SignInPage2());
     }
+    if (FirebaseAuth.instance.currentUser == null) {
+      Get.offAll(() => const SignInPage2());
+    }
     String? CheckUserName() {
       if (FirebaseAuth.instance.currentUser!.displayName != null) {
         return FirebaseAuth.instance.currentUser?.displayName;

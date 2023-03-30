@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:maths_in_wisconsin/acc.dart';
@@ -16,31 +16,29 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-//    if (FirebaseAuth.instance.currentUser == null) {
-    //     Get.offAll(() => const SignInPage2());
-    //   }
-    Get.testMode = true;
-    if (FirebaseAuth.instance.currentUser == null) {
-      Get.offAll(() => const SignInPage2());
-    }
-    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
-      if (user == null) {
-        print('User is currently signed out!');
-        Get.offAll(() => const SignInPage2());
-      } else {
-        print('User is signed in!');
-        //Get.to(MyApp());
-      }
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration.zero, () {
+        if (FirebaseAuth.instance.currentUser == null) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const SignInPage2(),
+            ),
+          );
+        } else {
+          print('User is signed in!');
+          //Get.to(MyApp());
+        }
+      });
     });
+
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -57,7 +55,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
       ),
       routes: {
-        "/dash": (_) => const DashPage(),
+        "/dash": (_) => new DashPage(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );

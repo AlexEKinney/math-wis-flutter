@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class SignInPage2 extends StatelessWidget {
+class SignInPage2 extends StatefulWidget {
   const SignInPage2({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,12 @@ class SignInPage2 extends StatelessWidget {
                       ],
                     ),
                   )));
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
 
