@@ -19,6 +19,9 @@ class AccPage extends StatelessWidget {
       } catch (e) {
         Get.offAll(() => const SignInPage2());
       }
+      if (FirebaseAuth.instance.currentUser == null) {
+        Get.offAll(() => const SignInPage2());
+      }
     }
 
     return Scaffold(
@@ -45,6 +48,7 @@ class AccPage extends StatelessWidget {
                       FloatingActionButton.extended(
                         onPressed: () async {
                           await FirebaseAuth.instance.signOut();
+                          Navigator.pushReplacementNamed(context, "/login");
                         },
                         heroTag: 'signout',
                         elevation: 0,
@@ -157,7 +161,7 @@ class _TopPortion extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://cdn.kincode.net/maths/av/bg/1.svg")),
+                            "https://placehold.co/250x250/000000/FFFFFF.png?text=\"Profile%20Picture\"")),
                   ),
                 ),
                 Positioned(
@@ -169,7 +173,7 @@ class _TopPortion extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
                       decoration: const BoxDecoration(
-                          color: kDefaultIconDarkColor, shape: BoxShape.circle),
+                          color: Colors.green, shape: BoxShape.circle),
                     ),
                   ),
                 ),

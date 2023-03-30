@@ -1,6 +1,6 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:maths_in_wisconsin/acc.dart';
@@ -9,6 +9,7 @@ import 'package:maths_in_wisconsin/hw.dart';
 import 'package:maths_in_wisconsin/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:maths_in_wisconsin/shop.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 
@@ -16,27 +17,32 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration.zero, () {
-        if (FirebaseAuth.instance.currentUser == null) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const SignInPage2(),
-            ),
-          );
-        } else {
-          print('User is signed in!');
-          //Get.to(MyApp());
-        }
-      });
+    // while (1 == 1) {
+    //   if (FirebaseAuth.instance.currentUser == null) {
+    //     Get.offAll(() => const SignInPage2());
+    //   }
+    //   sleep(const Duration(milliseconds: 250));
+    // }
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+      if (user == null) {
+        print('User is currently signed out!');
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => SignInPage2()));
+        });
+      } else {
+        print('User is signed in!');
+        //Get.to(MyApp());
+      }
     });
 
     return GetMaterialApp(
@@ -56,14 +62,20 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "/dash": (_) => new DashPage(),
+        "/base": (_) => new MyHomePage(
+              title: '',
+            ),
+        "/login": (_) => new SignInPage2(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 
   void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => SignInPage2()));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => SignInPage2()));
+    });
   }
 }
 
@@ -118,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DashPage(),
     HwPage(),
     const Center(child: Text("Learn", style: TextStyle(fontSize: 72))),
-    const Center(child: Text("Shop", style: TextStyle(fontSize: 72))),
+    shopPage(),
     AccPage(),
   ];
   @override

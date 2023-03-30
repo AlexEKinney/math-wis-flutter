@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class SignInPage2 extends StatefulWidget {
+class SignInPage2 extends StatelessWidget {
   const SignInPage2({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ class __FormContentState extends State<_FormContent> {
                   FirebaseService service = FirebaseService();
                   try {
                     await service.signInwithGoogle();
-                    Navigator.pushReplacementNamed(context, "/dash");
+                    Navigator.pushReplacementNamed(context, "/base");
                   } catch (e) {
                     if (kDebugMode) {
                       print(e);

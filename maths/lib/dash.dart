@@ -9,10 +9,16 @@ class DashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (FirebaseAuth.instance.currentUser == null) {
-      Get.offAll(() => const SignInPage2());
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => SignInPage2()));
+      });
     }
     if (FirebaseAuth.instance.currentUser == null) {
-      Get.offAll(() => const SignInPage2());
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => SignInPage2()));
+      });
     }
     String? CheckUserName() {
       if (FirebaseAuth.instance.currentUser!.displayName != null) {

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import 'login.dart';
 
-class HwPage extends StatefulWidget {
+class HwPage extends StatelessWidget {
   //   if (FirebaseAuth.instance.currentUser == null) {
   //   Get.offAll(() => const SignInPage2());
   // }
@@ -84,11 +84,10 @@ class HwPage extends StatefulWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const SignInPage2(),
-                          ),
-                        );
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (_) => SignInPage2()));
+                        });
                       },
                       child: const Text("Complete"),
                     ),
@@ -100,11 +99,5 @@ class HwPage extends StatefulWidget {
         ),
       ]),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }
