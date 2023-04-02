@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:appwrite/appwrite.dart';
 import 'package:maths_in_wisconsin/acc.dart';
 import 'package:maths_in_wisconsin/dash.dart';
 import 'package:maths_in_wisconsin/hw.dart';
@@ -32,6 +33,11 @@ class MyApp extends StatelessWidget {
     //   }
     //   sleep(const Duration(milliseconds: 250));
     // }
+    Client client = Client();
+    client
+        .setEndpoint('http://194.163.173.4/v1')
+        .setProject('6428190391cc63f38311')
+        .setSelfSigned(status: true);
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');

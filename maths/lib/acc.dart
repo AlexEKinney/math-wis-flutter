@@ -161,7 +161,7 @@ class _TopPortion extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://placehold.co/250x250/000000/FFFFFF.png?text=\"Profile%20Picture\"")),
+                            "http://194.163.173.4/v1/storage/buckets/64281b299b3b30d2f853/files/6429610b571d36e3189d/view?project=6428190391cc63f38311")),
                   ),
                 ),
                 Positioned(

@@ -45,6 +45,7 @@ dependencies:
   google_sign_in: ^6.0.0
   get: ^4.6.5
   dynamic_color: ^1.6.2
+  appwrite: ^8.2.0
   
 
 dev_dependencies:
