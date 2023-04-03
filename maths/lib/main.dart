@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:maths_in_wisconsin/acc.dart';
@@ -17,7 +18,7 @@ import 'package:get/get.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  MobileAds.instance.initialize();
   runApp(MyApp());
 }
 
@@ -41,10 +42,11 @@ class MyApp extends StatelessWidget {
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => SignInPage2()));
-        });
+        // WidgetsBinding.instance.addPostFrameCallback((_) {
+        //   Navigator.pushReplacement(
+        //       context, MaterialPageRoute(builder: (_) => SignInPage2()));
+        // }
+        //);
       } else {
         print('User is signed in!');
         //Get.to(MyApp());

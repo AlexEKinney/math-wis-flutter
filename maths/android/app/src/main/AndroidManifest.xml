@@ -4,6 +4,9 @@
         android:label="Maths In Wisconsin"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+                              <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4353860510202072~7080640368"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

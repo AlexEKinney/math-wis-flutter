@@ -1,9 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:maths_in_wisconsin/main.dart';
 
 class SignInPage2 extends StatelessWidget {
   const SignInPage2({Key? key}) : super(key: key);
@@ -113,8 +116,14 @@ class __FormContentState extends State<_FormContent> {
                 onPressed: () async {
                   FirebaseService service = FirebaseService();
                   try {
-                    await service.signInwithGoogle();
-                    Navigator.pushReplacementNamed(context, "/base");
+                    await service
+                        .signInwithGoogle()
+                        .then(Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const MyHomePage(
+                                      title: 'A',
+                                    ))) as FutureOr Function(String? value));
                   } catch (e) {
                     if (kDebugMode) {
                       print(e);
