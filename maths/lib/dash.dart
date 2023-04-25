@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:get/get.dart';
+import 'package:maths_in_wisconsin/startTask.dart';
 
 import 'login.dart';
 
@@ -17,13 +18,15 @@ class DashPage extends StatefulWidget {
 class _DashPageState extends State<DashPage> {
   get error => null;
 
+  get id => null;
+
   @override
   Widget build(BuildContext context) {
     BannerAd? _bannerAd;
     bool _isLoaded = false;
     final adUnitId = Platform.isAndroid
         ? 'ca-app-pub-3940256099942544/6300978111'
-        : 'ca-app-pub-3940256099942544/2934735716';
+        : 'ca-app-pub-3940256099942544/6300978111';
 
     void loadAd() {
       _bannerAd = BannerAd(
@@ -89,6 +92,12 @@ class _DashPageState extends State<DashPage> {
             return ListTile(
               onTap: () {
                 loadInterstitialAd(context, taks);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const startTask(taskId: "2")),
+                );
               },
               leading:
                   CircleAvatar(backgroundImage: NetworkImage(taks['label'])),
@@ -118,12 +127,13 @@ class _DashPageState extends State<DashPage> {
         "title": "Example Task 1",
         "label": "https://cdn-icons-png.flaticon.com/512/5277/5277459.png",
         "Artist": "Topic",
-        "id": "0"
+        "id": "1"
       },
       {
         "title": "Addition",
         "label": "https://cdn-icons-png.flaticon.com/512/1828/1828926.png",
         "Artist": "Number",
+        "id": "2"
       },
       {
         "title": "Subtraction",
@@ -202,8 +212,8 @@ class _DashPageState extends State<DashPage> {
     InterstitialAd? interstitialAd;
     InterstitialAd.load(
         adUnitId: Platform.isAndroid
-            ? "ca-app-pub-4353860510202072/2056378549"
-            : "ca-app-pub-4353860510202072/2056378549",
+            ? "ca-app-pub-3940256099942544/6300978111"
+            : "ca-app-pub-3940256099942544/6300978111",
         request: const AdRequest(),
         adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (ad) {

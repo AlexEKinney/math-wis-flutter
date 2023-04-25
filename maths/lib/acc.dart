@@ -17,10 +17,10 @@ class AccPage extends StatelessWidget {
           return "Failed To Load Name";
         }
       } catch (e) {
-        Get.offAll(() => const SignInPage2());
+        //Get.offAll(() => const SignInPage2());
       }
       if (FirebaseAuth.instance.currentUser == null) {
-        Get.offAll(() => const SignInPage2());
+//Get.offAll(() => const SignInPage2());
       }
     }
 
@@ -35,7 +35,8 @@ class AccPage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    CheckUserName().toString(),
+                    "Andrew Bishop",
+                    //CheckUserName().toString(),
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge
