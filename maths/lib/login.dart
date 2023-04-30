@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -96,44 +96,34 @@ class __FormContentState extends State<_FormContent> {
       child: Form(
         key: _formKey,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                onPressed: () async {
-                  FirebaseService service = FirebaseService();
-                  try {
-                    await service
-                        .signInwithGoogle()
-                        .then(Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const MyHomePage(
-                                      title: 'A',
-                                    ))) as FutureOr Function(String? value));
-                  } catch (e) {
-                    if (kDebugMode) {
-                      print(e);
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton.extended(
+                  label: Text("Sign in with Google"),
+                  icon: const Icon(FontAwesomeIcons.google),
+                  onPressed: () async {
+                    FirebaseService service = FirebaseService();
+                    try {
+                      await service
+                          .signInwithGoogle()
+                          .then(Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const MyHomePage(
+                                        title: 'A',
+                                      ))) as FutureOr Function(String? value));
+                    } catch (e) {
+                      if (kDebugMode) {
+                        print(e);
+                      }
                     }
-                  }
-                },
+                  },
+                ),
               ),
-            ),
-          ],
-        ),
+            ]),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'login.dart';
 
@@ -161,8 +162,7 @@ class _TopPortion extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage(
-                            "http://194.163.173.4/v1/storage/buckets/64281b299b3b30d2f853/files/6429610b571d36e3189d/view?project=6428190391cc63f38311")),
+                        image: NetworkImage("http://cdn.kincode.net/math.png")),
                   ),
                 ),
                 Positioned(

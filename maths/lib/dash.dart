@@ -22,35 +22,6 @@ class _DashPageState extends State<DashPage> {
 
   @override
   Widget build(BuildContext context) {
-    BannerAd? _bannerAd;
-    bool _isLoaded = false;
-    final adUnitId = Platform.isAndroid
-        ? 'ca-app-pub-3940256099942544/6300978111'
-        : 'ca-app-pub-3940256099942544/6300978111';
-
-    void loadAd() {
-      _bannerAd = BannerAd(
-        adUnitId: adUnitId,
-        request: const AdRequest(),
-        size: AdSize.banner,
-        listener: BannerAdListener(
-          // Called when an ad is successfully received.
-          onAdLoaded: (ad) {
-            debugPrint('$ad loaded.');
-            setState(() {
-              _isLoaded = true;
-            });
-          },
-          // Called when an ad request failed.
-          onAdFailedToLoad: (ad, err) {
-            debugPrint('BannerAd failed to load: $error');
-            // Dispose the ad here to free resources.
-            ad.dispose();
-          },
-        ),
-      )..load();
-    }
-
     // if (FirebaseAuth.instance.currentUser == null) {
     //   WidgetsBinding.instance.addPostFrameCallback((_) {
     //     Navigator.pushReplacement(
@@ -71,18 +42,6 @@ class _DashPageState extends State<DashPage> {
       }
     }
 
-    if (_bannerAd != null) {
-      Align(
-        alignment: Alignment.bottomCenter,
-        child: SafeArea(
-          child: SizedBox(
-            width: _bannerAd!.size.width.toDouble(),
-            height: _bannerAd!.size.height.toDouble(),
-            child: AdWidget(ad: _bannerAd!),
-          ),
-        ),
-      );
-    }
     return Scaffold(
       appBar: AppBar(title: const Text("Dashboard")),
       body: ListView.separated(
@@ -91,8 +50,6 @@ class _DashPageState extends State<DashPage> {
 
             return ListTile(
               onTap: () {
-                loadInterstitialAd(context, taks);
-
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -206,38 +163,5 @@ class _DashPageState extends State<DashPage> {
         "Artist": "Geometry",
       },
     ];
-  }
-
-  void loadInterstitialAd(BuildContext context, Map<String, dynamic> taksInfo) {
-    InterstitialAd? interstitialAd;
-    InterstitialAd.load(
-        adUnitId: Platform.isAndroid
-            ? "ca-app-pub-3940256099942544/6300978111"
-            : "ca-app-pub-3940256099942544/6300978111",
-        request: const AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-          onAdLoaded: (ad) {
-            interstitialAd = ad;
-            interstitialAd!.show();
-            interstitialAd!.fullScreenContentCallback =
-                FullScreenContentCallback(
-                    onAdFailedToShowFullScreenContent: ((ad, error) {
-              ad.dispose();
-              interstitialAd!.dispose();
-              debugPrint(error.message);
-            }), onAdDismissedFullScreenContent: (ad) {
-              ad.dispose();
-              interstitialAd!.dispose();
-
-              //Todo : Switch to different Screen.
-            }, onAdShowedFullScreenContent: (ad) {
-              ad.dispose();
-              interstitialAd!.dispose();
-            });
-          },
-          onAdFailedToLoad: (err) {
-            debugPrint(err.message);
-          },
-        ));
   }
 }

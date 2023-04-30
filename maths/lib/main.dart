@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
     });
 
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Maths In Wisconsin',
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blueGrey,
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
             ),
         "/login": (_) => new SignInPage2(),
       },
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Maths In Wisconsin Home Page'),
     );
   }
 
