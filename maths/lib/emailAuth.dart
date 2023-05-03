@@ -158,7 +158,7 @@ class __FormContentState extends State<_FormContent> {
             _gap(),
             SizedBox(
               child: FloatingActionButton.extended(
-                label: const Text('Forgort Password / Help'),
+                label: const Text('Forgot Password / Help'),
                 icon: const Icon(Icons.help),
                 onPressed: () async {
                   ProgressDialog progressDialog = ProgressDialog(
