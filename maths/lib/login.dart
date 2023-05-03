@@ -5,7 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:maths_in_wisconsin/emailAuth.dart';
 import 'package:maths_in_wisconsin/main.dart';
 
 class SignInPage2 extends StatelessWidget {
@@ -70,7 +72,12 @@ class _Logo extends StatelessWidget {
                     .headlineMedium
                     ?.copyWith(color: Colors.black),
           ),
-        )
+        ),
+        const Text(
+          "Please Sign In To Continue",
+          textAlign: TextAlign.center,
+        ),
+        const Padding(padding: EdgeInsets.only(bottom: 8))
       ],
     );
   }
@@ -96,34 +103,104 @@ class __FormContentState extends State<_FormContent> {
       child: Form(
         key: _formKey,
         child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: double.infinity,
-                child: FloatingActionButton.extended(
-                  label: Text("Sign in with Google"),
-                  icon: const Icon(FontAwesomeIcons.google),
-                  onPressed: () async {
-                    FirebaseService service = FirebaseService();
-                    try {
-                      await service
-                          .signInwithGoogle()
-                          .then(Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const MyHomePage(
-                                        title: 'A',
-                                      ))) as FutureOr Function(String? value));
-                    } catch (e) {
-                      if (kDebugMode) {
-                        print(e);
-                      }
-                    }
-                  },
-                ),
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    child: FloatingActionButton(
+                      child: const Icon(FontAwesomeIcons.google),
+                      onPressed: () async {
+                        FirebaseService service = FirebaseService();
+                        try {
+                          await service.signInwithGoogle().then(
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const MyHomePage(
+                                            title: 'A',
+                                          ))) as FutureOr Function(
+                                  String? value));
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(e);
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                  const Padding(padding: EdgeInsets.all(8.0)),
+                  SizedBox(
+                    child: FloatingActionButton(
+                      child: Icon(FontAwesomeIcons.microsoft),
+                      onPressed: () async {
+                        FirebaseService service = FirebaseService();
+                        try {
+                          await service.signInwithGoogle().then(
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const MyHomePage(
+                                            title: 'A',
+                                          ))) as FutureOr Function(
+                                  String? value));
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(e);
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                  const Padding(padding: EdgeInsets.all(8.0)),
+                  SizedBox(
+                    child: FloatingActionButton(
+                      child: Icon(FontAwesomeIcons.yahoo),
+                      onPressed: () async {
+                        FirebaseService service = FirebaseService();
+                        try {
+                          await service.signInwithGoogle().then(
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const MyHomePage(
+                                            title: 'A',
+                                          ))) as FutureOr Function(
+                                  String? value));
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(e);
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ]),
+            ),
+            const Padding(padding: EdgeInsets.all(8.0)),
+            SizedBox(
+              width: double.infinity,
+              child: FloatingActionButton.extended(
+                label: Text("Sign in with Email"),
+                icon: const Icon(FontAwesomeIcons.solidEnvelope),
+                onPressed: () async {
+                  FirebaseService service = FirebaseService();
+                  try {
+                    Get.to(() => const emailAuthPage());
+                  } catch (e) {
+                    if (kDebugMode) {
+                      print(e);
+                    }
+                  }
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
