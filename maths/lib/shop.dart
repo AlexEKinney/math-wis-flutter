@@ -18,7 +18,7 @@ class shopPage extends StatelessWidget {
         title: const Text("Shop"),
         automaticallyImplyLeading: false,
       ),
-      body: ListView(scrollDirection: Axis.horizontal, children: const <Widget>[
+      body: ListView(scrollDirection: Axis.horizontal, children: <Widget>[
         Column(
           children: [
             Padding(
