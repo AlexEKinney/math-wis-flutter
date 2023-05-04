@@ -27,6 +27,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: debug-apk
+          tag: debug
       - uses: actions/upload-artifact@v1
         with:
           name: debug-apk
