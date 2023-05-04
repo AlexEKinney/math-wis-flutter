@@ -178,6 +178,29 @@ class __FormContentState extends State<_FormContent> {
                       },
                     ),
                   ),
+                  const Padding(padding: EdgeInsets.all(8.0)),
+                  SizedBox(
+                    child: FloatingActionButton(
+                      child: Icon(FontAwesomeIcons.apple),
+                      onPressed: () async {
+                        FirebaseService service = FirebaseService();
+                        try {
+                          await service.signInwithGoogle().then(
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => const MyHomePage(
+                                            title: 'A',
+                                          ))) as FutureOr Function(
+                                  String? value));
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(e);
+                          }
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
