@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dialogs/dialogs.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class emailAuthPage extends StatelessWidget {
@@ -177,6 +179,23 @@ class __FormContentState extends State<_FormContent> {
                 },
               ),
             ),
+            const Padding(padding: EdgeInsets.all(8.0)),
+            SizedBox(
+              width: double.infinity,
+              child: FloatingActionButton.extended(
+                label: Text("Create Account"),
+                icon: const Icon(FontAwesomeIcons.userPlus),
+                onPressed: () async {
+                  try {
+                    Get.to(() => const emailAuthPage());
+                  } catch (e) {
+                    if (kDebugMode) {
+                      print(e);
+                    }
+                  }
+                },
+              ),
+            )
           ],
         ),
       ),

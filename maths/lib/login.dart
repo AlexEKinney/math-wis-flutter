@@ -221,7 +221,7 @@ class __FormContentState extends State<_FormContent> {
                   }
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
